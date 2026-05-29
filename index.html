@@ -3,10 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的网站</title>
+    <title>Moss</title>
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --surface: #141821;
+            --text: #e1e4ec;
+            --muted: #6b7280;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.25);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-image:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99, 102, 241, 0.08), transparent),
+                radial-gradient(ellipse 40% 30% at 85% 90%, rgba(99, 102, 241, 0.04), transparent);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            animation: floatIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+                0 0 120px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 32px var(--accent-glow);
+        }
+
+        .greeting {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+        }
+
+        .tagline {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
+            color: var(--text);
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .link-btn.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .link-btn.primary:hover {
+            background: #4f46e5;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem 0 1.5rem;
+        }
+
+        .footer {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .stats {
+                gap: 1.2rem;
+                padding: 1rem;
+            }
+
+            .links {
+                flex-direction: column;
+            }
+
+            .link-btn {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>你好，世界</h1>
-    <p>这是我的第一个网站。</p>
+    <div class="card">
+        <div class="avatar">M</div>
+        <div class="greeting">Hello World</div>
+        <h1>I'm Moss</h1>
+        <p class="tagline">
+            写代码、拍照片、折腾有趣的东西。<br>目前在探索生成式 AI 与产品设计。
+        </p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value">4+</span>
+                <span class="stat-label">年经验</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">20+</span>
+                <span class="stat-label">项目</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">∞</span>
+                <span class="stat-label">好奇心</span>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="#" class="link-btn primary">Resume</a>
+            <a href="https://github.com" class="link-btn" target="_blank">GitHub</a>
+            <a href="#" class="link-btn">Blog</a>
+            <a href="mailto:hello@example.com" class="link-btn">Email</a>
+        </div>
+
+        <div class="divider"></div>
+        <div class="footer">Built with GitHub Pages &middot; 2026</div>
+    </div>
 </body>
 </html>
+
